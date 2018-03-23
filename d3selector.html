@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Learning selector </title>
+
+    <style>
+        .myStyle {
+            background-color: aqua
+        }
+    </style>
+</head>
+
+<body>
+
+    <p> premier paragraphe </p>
+
+    <p id="second"> deuxieme paragraphe </p>
+
+    <p class="myStyle"> troisieme paragraphe</p>
+
+    <table>
+        <tr>
+            <td>
+                One
+            </td>
+            <td>
+                Two
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                One
+            </td>
+            <td>
+                Two
+            </td>
+
+        </tr>
+    </table>
+
+    <div>
+        <p>5ieme paragraphe enrichie using insert fucntion</p>
+    </div>
+
+
+    <script>
+
+        /* Docoumentation des API
+            https://github.com/d3/d3/blob/master/API.md#selections-d3-selection
+        */
+
+        d3.select("p").style("color", "green");
+
+        d3.select("#second").style("color", "red");
+
+        d3.selectAll("p").style("text-shadow", "7px 9px black");
+
+        d3.select(".myStyle").style("color", "yellow");
+
+        d3.select("tr").selectAll("td").style('background-color', 'yellow');
+
+        d3.select("body").append("p").text("4ieme paragraphe inséré avec la fonction append");
+
+        d3.select("div").insert("p").text("6ieme pagraphe");
+        
+    </script>
+
+</body>
+
+</html>

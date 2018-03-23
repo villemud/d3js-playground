@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: steelblue;
+            margin: 5px;
+        }
+    </style>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // https://github.com/d3/d3-selection/blob/master/README.md#handling-events
+
+        d3.selectAll("div")
+            .on("mouseover", function () {
+                d3.select(this)
+                    .style("background-color", "orange");
+                console.log(d3.event);
+
+                console.log(d3.mouse(this));
+            })
+            .on("mouseout", function () {
+                d3.select(this)
+                    .style("background-color", "steelblue");
+                console.log(d3.event);
+
+                console.log(d3.mouse(this));
+
+            });
+
+
+    </script>
+</body>
+
+
+</html>

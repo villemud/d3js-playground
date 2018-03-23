@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+    <p>Data binding in D3</p>
+
+    <h1></h1>
+    <h1></h1>
+    <h1></h1>
+    <h1></h1>
+
+    <script>
+        // https://github.com/d3/d3-selection/blob/master/README.md#joining-data
+
+  
+
+        var dataTexts = ["Hello wordl!"];
+
+        // il faut toujours passer un array a la fonction data
+        d3.select("body")
+            .selectAll("p")
+            .data(dataTexts)
+            .text(function (d) {
+                return d + 'Danny';
+            })
+
+
+        var data2 = ["Danny", "Milene", "Mahee", "Gael"];
+        d3.select("body")
+            .selectAll("h1")
+            .data(data2)
+            .text(function (d) {
+                return d;
+            })
+        /* 
+         l'exemple precedent fonctionne bien lorsque le nombre d'element d'un array
+         correspond au nombre d'element dom. dans notre h1
+        */
+
+        var data3 = ["Danny", "Milene", "Mahée", "Gaël", "Noah", "Liv"];
+        d3.select("body")
+            .selectAll("h2")
+            .data(data3)
+            .enter()
+            .append("h2")
+            .text(function (d) { return d });
+
+
+        var matrix = [
+            [1, 2, 3, 4],
+            [5, 6, 7, 8],
+            [9, 10, 11, 12],
+            [13, 14, 15, 16]
+        ];
+
+        var tablerows =
+            d3.select("body")
+                .append("table")
+                .selectAll("tr")
+                .data(matrix)
+                .enter()
+                .append("tr");
+
+        var tr = tablerows.selectAll("td")
+            .data(function (d) {    // joins inner array of each row
+                console.log(d);
+                return d;
+            })
+            .enter()    // create placeholders for each element in an inner array
+            .append("td") // creates <td> in each placeholder
+            .text(function (d) {
+                console.log(d);
+                return d; // add value of each inner array as a text in <td>
+            });
+    </script>
+
+</body>
+
+
+</html>
