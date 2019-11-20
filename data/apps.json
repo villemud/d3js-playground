@@ -1,0 +1,69 @@
+[
+    {
+        "app": "dms-api",
+        "context": "dms-api",
+        "url": "https://api-interne.groupemutuel.ch",
+        "artefact": "maven-artefact-id",
+        "product": "Document Management",
+        "type": "facade",
+        "public": "yes",
+        "events": [
+            {
+                "queue": "docinput"
+            }
+        ],
+        "rest-dependencies": [
+            {
+                "url": "dms-api"
+            },
+            {
+                "url": "contrat-api"
+            }
+        ],
+        "ejb-dependencies": [
+            {
+                "url": "contratWar"
+            },
+            {
+                "url": "partenaireWar"
+            }
+        ],
+        "loadbalancing": [
+            {
+                "server": "gmabsl03",
+                "port:": "203400"
+            },
+            {
+                " server": "gmabsl04",
+                "port": "203400"
+            }
+        ],
+        "operation-quality-view": {
+            "security": "1",
+            "monitoring": "9"
+
+        },
+        "developement-quality-view": {
+            "security": "1",
+            "maintenance": "9"
+        }
+    },
+    {
+        "app": "bridge-eloqua",
+        "context": "bridge-eloqua",
+        "url": "https://api.groupemutuel.ch",
+        "artefact": "maven-artefact-id",
+        "product": "Marketing",
+        "type": "facade",
+        "public": "yes"
+    },
+    {
+        "app": "contrat-api",
+        "context": "contrat",
+        "url": "https://api.groupemutuel.ch",
+        "artefact": "maven-artefact-id",
+        "product": "Gestion Contrat",
+        "type": "domain-api",
+        "public": "no"
+    }
+]

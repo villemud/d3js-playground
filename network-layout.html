@@ -1,0 +1,94 @@
+
+
+
+<!doctype html>
+
+<html>
+<hearder>
+<style>
+
+div.dmz {width:200px;background:#D8FBD6;border:1px dotted black;padding:8px;}
+div.dmz ul {color:green;}
+div.dmz {width:200px;background:#D8FBD6;border:1px dotted black;padding:8px;}
+div.dmz ul {color:green;}
+
+.container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px 200px 200px 200px 200px 200px 200px 200px 200px;
+  grid-template-rows: auto;
+  grid-column-gap: 30px;
+  grid-row-gap: 15px;
+}
+
+.item {
+  align-self: start;      
+}
+
+
+
+
+
+
+</style>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</header>
+<body>
+        <p>Data binding in D3</p>
+
+        <div class="container">
+                <div  class="item dmz">
+                        <p>dmz-db</p>
+                        <p>dmz-apps</p>
+                        <p>dmz-authent</p>
+                        <p>dmz2</p>
+                        <p>dmz2</p>
+                        <p>dmz2</p>
+                </div>
+                <div class="item dmz">
+                        <p>dmz5</p>
+                </div>
+                <div class="item dmz">
+                        <p>dmz8</p>
+                </div>
+                <div class="item dmz">
+                        <p>dmz11</p>
+                </div>
+
+               
+        </div>
+
+        <div class="container">
+                <div  class="item dmz ">
+                        <p>dmz1</p>
+                </div>
+                <div class="item dmz">
+                        <p>dmz2</p>
+                </div>
+                <div class="item dmz">
+                        <p>dmz2</p>
+                </div>
+                <div class="item dmz">
+                        <p>dmz2</p>
+                </div>
+
+               
+        </div>
+
+
+<script>
+var dataTexts = ["Ready to start with d3js"];
+//https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-auto-columns-rows
+// https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+d3.select("body")
+    .selectAll("p")
+    .data(dataTexts)
+    .text(function (text) {
+        return text ;
+    })
+
+</script>
+</body>
+
+
+</html>

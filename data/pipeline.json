@@ -1,0 +1,50 @@
+{
+    "nodes": [
+      {"id": "ear-sinistre",  "group": 1},
+      {"id": "ear-contrat", "group": 1},
+      {"id": "ear-partenaire", "group": 1},
+      {"id": "ear-contentieux", "group": 1},
+      {"id": "ear-contrat-entreprise", "group": 1},
+      {"id": "build-bamboo", "group": 2},
+      {"id": "build-gitlab", "group": 2},
+      {"id": "build-jenkins", "group": 2},
+      {"id": "deploy-gitlab", "group": 3},
+      {"id": "deploy-bamboo", "group": 3},
+      {"id": "deploy-deployit", "group": 3},
+      {"id": "weblogic", "group": 4},
+      {"id": "waspartenaire", "group": 5},
+      {"id": "wassinsitre", "group": 5},
+      {"id": "wascontrat", "group": 5},
+      
+
+    ],
+    "links": [
+      {"source": "ear-sinistre", "target": "build-bamboo", "value": 1},
+      {"source": "build-bamboo", "target": "plint", "value": 1},
+      {"source": "plint", "target": "deploy-deployit", "value": 1},
+      {"source": "ear-contrat",  "target": "build-bamboo" , "value": 1},
+      {"source": "build-bamboo", "target": "plint", "value": 1},
+      {"source": "plint", "target": "deploy-deployit", "value": 1}
+      {"source": "ear-partenaire", "target": "build-bamboo" , "value": 1},
+      {"source": "build-bamboo", "target": "plint", "value": 1},
+      {"source": "plint", "target": "deploy-deployit", "value": 1}
+      {"source": "ear-contentieux", "target": "build-bamboo" , "value": 1},
+      {"source": "build-bamboo", "target": "plint", "value": 1},
+      {"source": "plint", "target": "deploy-deployit", "value": 1},
+      {"source": "ear-contrat-entreprise", "target": "build-bamboo" , "value": 1},
+      {"source": "build-bamboo", "target": "plint", "value": 1},
+      {"source": "plint", "target": "deploy-deployit", "value": 1},
+      {"source": "dms-api", "target": "springboot", "value": 8},
+      {"source": "api2", "target": "springboot", "value": 8},
+      {"source": "api3", "target": "springboot", "value": 8},
+      {"source": "api4", "target": "springboot", "value": 8},
+      {"source": "api5", "target": "springboot", "value": 8},
+      {"source": "api6", "target": "springboot", "value": 8},
+      {"source": "batch1", "target": "batchcore", "value": 8},
+      {"source": "batch2", "target": "batchcore", "value": 8},
+      {"source": "batch3", "target": "batchcore", "value": 8},
+      {"source": "batch4", "target": "batchcore", "value": 8}
+
+      
+    ]
+}

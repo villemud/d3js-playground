@@ -1,0 +1,175 @@
+{
+    "name:": "topology",
+    "children": [
+        {
+            "name": "grappe-rcp",
+            "children": [
+                {
+                    "name": "part",
+                    "children": [
+                        {
+                            "name": "ear1",
+                            "size": 100
+                        },
+                        {
+                            "name": "ear2",
+                            "size": 500
+                        },
+                        {
+                            "name": "ear3",
+                            "size": 200
+                        },
+                        {
+                            "name": "ear4",
+                            "size": 22
+                        }
+                    ]
+                },
+                {
+                    "name": "sini",
+                    "children": [
+                        {
+                            "name": "ear4",
+                            "size": 3938
+                        },
+                        {
+                            "name": "ear5",
+                            "size": 3812
+                        },
+                        {
+                            "name": "ear6",
+                            "size": 6714
+                        }
+                    ]
+                },
+                {
+                    "name": "cont",
+                    "children": [
+                        {
+                            "name": "ear7",
+                            "size": 3938
+                        },
+                        {
+                            "name": "ear8",
+                            "size": 3812
+                        },
+                        {
+                            "name": "ear9",
+                            "size": 6714
+                        }
+                    ]
+                },
+                {
+                    "name": "fina",
+                    "children": [
+                        {
+                            "name": "ear10",
+                            "size": 3938
+                        },
+                        {
+                            "name": "ear11",
+                            "size": 3812
+                        },
+                        {
+                            "name": "ear12",
+                            "size": 6714
+                        }
+                    ]
+                },
+                {
+                    "name": "tran",
+                    "children": [
+                        {
+                            "name": "ear13",
+                            "size": 3938
+                        },
+                        {
+                            "name": "ear14",
+                            "size": 3812
+                        },
+                        {
+                            "name": "ear15",
+                            "size": 6714
+                        }
+                    ]
+                },
+                {
+                    "name": "poly",
+                    "children": [
+                        {
+                            "name": "ear16",
+                            "size": 3938
+                        },
+                        {
+                            "name": "ear17",
+                            "size": 3812
+                        },
+                        {
+                            "name": "ear18",
+                            "size": 6714
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "grappe-batch",
+            "children": [
+                {
+                    "name": "part",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "sprinboot-externe",
+            "children": [
+                {
+                    "name": "rest-dms"
+                },
+                {
+                    "name": "rest-partenaire"
+                },
+                {
+                    "name": "rest-partenaire.core"
+                },
+                {
+                    "name": "rest-dextragw"
+                },
+                {
+                    "name": "rest-mobile-gateway"
+                }
+            ]
+        },
+        {
+           "name": "sprinboot-interne",
+           "children":[
+               {
+                   "name": "rest-libelle"
+               }
+           ]
+
+        } ,
+        {
+           "name": "playapps",
+           "children":[
+            {
+                "name": "gmnet"
+            },
+            {
+                "name": "extranet-entreprise"
+            },
+            {
+                "name": "extranet-agent"
+            },
+            {
+                "name": "epremium-sante"
+            },
+            {
+                "name": "epremium-entreprise"
+            }
+           ]
+
+        }
+    ]
+}
