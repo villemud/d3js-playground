@@ -1,0 +1,30 @@
+<!doctype html>
+
+<html>
+<hearder>
+<style>
+
+
+</style>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</header>
+<body>
+        <p>Data binding in D3</p>
+
+<script>
+var dataTexts = ["Ready to start with d3js"];
+
+// il faut toujours passer un array a la fonction data
+d3.select("body")
+    .selectAll("p")
+    .data(dataTexts)
+    .text(function (text) {
+        return text ;
+    })
+
+</script>
+</body>
+
+
+</html>

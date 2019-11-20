@@ -1,0 +1,182 @@
+<!doctype html>
+
+<html>
+<hearder>
+<style>
+       
+
+  svg text {
+            fill:white;
+            font: 10px sans-serif;
+            text-anchor: end;
+        }
+
+</style>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</header>
+<body>
+        <p>Data binding in D3</p>
+
+<script>
+
+
+
+
+
+d3.json("./data/nova-components.json", (error, jsondata) => {
+  if (error) throw error;
+
+  var width = 1000;
+  var height = 1000;
+
+  var boxlength = 66;
+  var boxHeigth = 40;
+  var boxspace = 5;
+  var boxPerRow = 5;
+      
+    //Create SVG element
+    var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+   
+var nbBox = 16;
+var nbRow = Math.trunc(nbBox / boxPerRow) + 1;
+console.log("nb row:" + nbRow)
+console.log("nb height:" + ((boxHeigth * nbRow) + (boxspace * nbRow) + 1))
+ //Create and append rectangle element
+ svg.append("rect")
+          .attr("fill", "orange")
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("rx", "2%")
+          .attr("ry", "2%")
+          .attr("width", ((boxlength * boxPerRow) + (boxspace * boxPerRow) + boxspace))
+          .attr("height", ((boxHeigth * nbRow) + (boxspace * nbRow) + boxspace)) 
+
+var colnumber = 1;
+var rowNumer = 1;
+
+for(var i=1; i < nbBox + 1; i++){
+    
+    if ((i % boxPerRow) === 0) {
+        colnumber = boxPerRow;
+    } else {
+        colnumber = i % boxPerRow;
+    }
+    svg.append("rect")
+            .attr("fill", "blue")
+            .attr("x", (boxspace * colnumber) + ((colnumber - 1) * boxlength ))
+            .attr("y", (boxspace * rowNumer) + ((rowNumer - 1) * boxHeigth))
+            .attr("rx", 0)
+            .attr("ry", "2%")
+            .attr("width", boxlength)
+            .attr("height", boxHeigth)
+    
+
+    if ((i % boxPerRow) === 0) { rowNumer = rowNumer + 1};
+}  
+  
+  //var dataByContainer = d3.nest()
+  //                        .key((d) => {return d.container})
+  //                        .map(jsondata.artefacts);
+
+  
+/* dataByContainer.each((artefacts, k) => { console.log(k); 
+    d3.select("body")
+            .append("h1").text( k);
+
+        d3.select("body")
+            .selectAll("p")
+            .data(artefacts)
+            .enter()
+            .append("p")
+            .text((d) => d.name)
+            .style("color" , (d) =>  "green")
+})*/
+var root2 = d3.stratify()
+                    .id(function(d) { return d.name; })
+                    .parentId(function(d) { return d.container; })
+                    (jsondata.artefacts);
+  
+
+  var dataByContainer = d3.nest()
+                          .key((d) => {return d.container})
+                          .entries(jsondata.artefacts);
+
+
+
+var margin = {top: 100, right: 50, bottom: 100, left: 50},
+    width = 900 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var nodes = d3.tree(root2)
+    .size([width, height]);
+
+var svg = d3.select("body")
+    .attr("bgcolor", "#2c2c2c")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+   .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  
+var node = svg.selectAll(".node")
+    .data(nodes)
+   .enter()
+    .append("g");
+    
+node.append("rect")
+    .attr("width", 140)
+    .attr("height", 80)
+    .attr("fill", "tan")
+    .attr("x", function(d) { return d.x - 70; })
+    .attr("y", function(d) { return height - d.y - 40; });
+
+node.append("text")
+    .attr("font-size", "16px")
+    .attr("fill", "black")
+    .attr("x", function(d) { return d.x; })
+    .attr("y", function(d) { return height - d.y - 15; })
+    .style("text-anchor", "middle")
+    .text(function(d) { return d.name; });
+
+/*   .style("text-anchor", "middle")
+    .text(function(d) { return d.born + "–" + d.died; });
+
+node.append("text")
+    .attr("font-size", "11px")
+    .attr("x", function(d) { return d.x; })
+    .attr("y", function(d) { return 28 + height - d.y; })
+    .style("text-anchor", "middle")
+    .text(function(d) { return d.location; });
+      
+var link = svg.selectAll(".link")
+    .data(tree.links(nodes))
+   .enter()
+    .insert("path", "g")
+    .attr("fill", "none")
+    .attr("stroke", "#000")
+    .attr("stroke", "#000")
+    .attr("shape-rendering", "crispEdges")
+    .attr("d", connect);
+  
+function connect(d, i) {
+    return     "M" + d.source.x + "," + (height - d.source.y)
+             + "V" + (height - (3*d.source.y + 4*d.target.y)/7)
+             + "H" + d.target.x
+             + "V" + (height - d.target.y);
+}; */
+
+
+
+
+})
+</script>
+</body>
+
+
+</html>

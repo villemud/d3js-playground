@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html>
+<hearder>
+
+        <Access-Control-Allow-Origin>*</Access-Control-Allow-Origin>
+<style>
+
+
+</style>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</header>
+<body>
+
+    <p>Data binding in D3</p>
+<script>
+
+console.log('Make it work'); 
+
+//fetch("./data/topology.json").then(res => console.log(res));
+
+
+
+
+d3.json("./data/nova-components.json", (error, jsondata) => {
+  if (error) throw error;
+
+console.log(jsondata);
+  var dataByTechnology = d3.nest()
+                          .key((d) => {return d.framework})
+                          .entries(d.artefacts.filter((element) => element.type != "artefact"));
+
+
+  var dataByNode = d3.nest()
+                          .key((d) => {return d.framework})
+                          .entries(jsondata.artefacts);
+                          
+
+  console.log(dataByTechnology)
+
+  //d3.select("body")
+  //  .data(jsondata.artefacts)
+  //  .enter()
+  //  .append("p")
+  //      .text((d , i) => d.name)
+  //      .style("color" , (d) =>  "red")
+
+  d3.select("body")
+    .data(dataByTechnology)
+    .enter()
+    .append("p")
+        .text((d , i) => d.key)
+        .style("color" , (d) =>  "green")
+
+});
+
+
+</script>
+</body>
+
+
+</html>
