@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -8,16 +9,50 @@
 <body>
 
 
+    <svg width="960" height="500"></svg>
+    <script>
 
-<script>
-  d3.csv("./data/employee.csv", function(data) {
-    for (var i = 0; i < data.length; i++) {
-        console.log(data[i].Name);
-        console.log(data[i].Age);
-    }
-});
+        
+        const svg = d3.select('svg');
+        const width = +svg.attr('width');
+        const height = +svg.attr('height');
+    
 
-</script>    
+       
+
+        const render = data => {
+            const xValue = d => d.Age
+            const yValue = d => d.nom
+
+            const margin = { top:   10, right: 20, bottom: 20, left: 10 }
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+            const xScale = d3.scaleLinear()
+                .domain([0, 100])
+                .range([0, innerWidth]);
+
+            const yScale = d3.scaleBand()
+                .domain(data.map(yValue))
+                .range([0, innerHeight]);
+
+            const g = svg.append('g')
+               .attr('transform', () => 'translate(' + margin.left + ',' + margin.top + ')');
+
+            g.selectAll('rect').data(data)
+                .enter().append('rect')
+                .attr('y', d => yScale(yValue(d)))
+                .attr('width', d => xScale(xValue(d)))
+                .attr('height', yScale.bandwidth());
+        };
+
+        d3.csv("./data/employee.csv").then(data => {
+            data.forEach(d => {
+                d.Age = +d.Age;
+            });
+            render(data);
+        });
+
+    </script>
 </body>
 
 

@@ -20,13 +20,13 @@
 
     <script>
 
-        var data = [10, 20, 50, 10];
-        var width = 500, scaleFactor = 5, barHeight = 20;
+        var data = [10, 20, 50, 10, 1000];
+        var width = 500, scaleFactor = 25, barHeight = 10;
 
         var graph = d3.select("body")
             .append("svg")
-            .attr("width", width)
-            .attr("height", barHeight * data.length);
+            .attr("width", width + 10)
+            .attr("height", barHeight * data.length + 10);
 
         var bar = graph.selectAll("g")
             .data(data)
@@ -52,7 +52,7 @@
          // Create scale
     var scale = d3.scaleLinear()
                   .domain([d3.min(data), d3.max(data)])
-                  .range([0, width - 100]);
+                  .range([0, width]);
 
     // Add scales to axis
     var x_axis = d3.axisBottom()

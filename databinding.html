@@ -19,20 +19,20 @@
 
   
 
-        var dataTexts = ["Hello wordl!"];
+        var dataTexts = ["Learning d3.js"];
 
         // il faut toujours passer un array a la fonction data
         d3.select("body")
             .selectAll("p")
             .data(dataTexts)
             .text(function (d) {
-                return d + 'Danny';
+                return 'Danny ' + d;
             })
 
 
         var data2 = ["Danny", "Milene", "Mahee", "Gael"];
         d3.select("body")
-            .selectAll("h1")
+            .selectAll("h6")
             .data(data2)
             .text(function (d) {
                 return d;
@@ -50,6 +50,9 @@
             .append("h2")
             .text(function (d) { return d });
 
+            d3.selectAll("h2").on("click", function() {
+                d3.select(this).style("color", "red");
+              });
 
         var matrix = [
             [1, 2, 3, 4],

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<header>
+    <style>
+        svg rect {
+            fill: orange;
+        }
+
+        svg text {
+            fill: white;
+            font: 10px sans-serif;
+            text-anchor: end;
+        }
+    </style>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</header>
+
+<body>
+   <svg width="960" height="500"></svg>
+    <script>
+        const svg = d3.select('svg');
+        svg.style('background-color', 'blue');
+        const width = +svg.attr('width');
+        console.log(typeof width);
+       
+        
+        const circle = svg.append('circle')
+            .attr('r', 200)
+            .attr('cx', width / 2)
+            .attr('cy', 500 / 2)
+            .attr('fill', 'yellow')
+            .attr('stroke', 'black');
+    </script>
+</body>
+
+</html>
